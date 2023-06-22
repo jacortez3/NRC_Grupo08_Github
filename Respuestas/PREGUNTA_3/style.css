@@ -1,0 +1,170 @@
+/*
+  Theme Name: eBusiness
+  Theme URL: https://bootstrapmade.com/ebusiness-bootstrap-corporate-template/
+  Author: BootstrapMade.com
+  License: https://bootstrapmade.com/license/
+*/
+
+/*-----------------------------------------------------------------------------------
+   CSS INDEX
+  ===================
+
+  1. Theme Default CSS (body, link color, section etc)
+  2. Header Area
+   2.1 Stick menu Area
+  3. About Area
+  4.Services Area
+  5.Skill Area
+  6.Faq Area
+  7.Wellcome Area
+  8.Team Area
+  9.Review Area
+  10.Portfolio Area
+  11. Pricing Table
+  12. Testimonials area
+  13. Review Area
+  14. Quote area
+  15.Footer Area
+  16.Home Page-2 Area
+  17.Home Page 3  CSS
+  18.Blog CSS
+  17.Blog Details CSS
+
+-----------------------------------------------------------------------------------*/
+
+/*----------------------------------------*/
+/*  1.  Theme default CSS
+/*----------------------------------------*/
+body {
+  font-family: "montserrat", serif;
+  background-image: url("../../Imagenes/fondo.jpg");
+  background-size: cover;
+  margin: 6%;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+table {
+	width: 800px;
+	border-collapse: collapse;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+th,
+td {
+	padding: 15px;
+	background-color: rgba(255,255,255,0.2);
+	color: #1b326d;
+}
+
+th {
+	text-align: left;
+}
+
+thead {
+	th {
+		background-color: #55608f;
+	}
+}
+
+tbody {
+	tr {
+		&:hover {
+			background-color: rgba(255,255,255,0.3);
+		}
+	}
+	td {
+		position: relative;
+		&:hover {
+			&:before {
+				content: "";
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: -9999px;
+				bottom: -9999px;
+				background-color: rgba(255,255,255,0.2);
+				z-index: -1;
+			}
+		}
+	}
+}
+
+
+button {
+  padding: 12.5px 30px;
+  border: 0;
+  border-radius: 100px;
+  background-color: #2ba8fb;
+  color: #ffffff;
+  font-weight: Bold;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+
+button:hover {
+  background-color: #6fc5ff;
+  box-shadow: 0 0 20px #6fc5ff50;
+  transform: scale(1.1);
+}
+
+button:active {
+  background-color: #3d94cf;
+  transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+  box-shadow: none;
+  transform: scale(0.98);
+}
+
+.navbar-nav>li>.dropdown-menu{
+	margin-top: 20px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+.mega-dropdown{
+	position: static !important;
+	width: 100%;
+}
+.mega-dropdown-menu{
+	padding: 20px 20px;
+	width: 100%;
+	box-shadow: none;
+	webkit-box-shadow:none;
+}
+.btn-devcode{
+	background: #33b5e5;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	font-size: 30px;
+	color: white;
+	border-radius: 0;
+	text-align: center;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+.app-justificar{
+	text-align: justify;
+}
+
+.mega-dropdown-menu:before{
+	border-bottom: 15px solid #fff;
+	border-right: 17px solid transparent;
+	border-left: 17px solid transparent;
+	position: absolute;
+	top: -15px;
+	left: 239px;
+	z-index: 10;
+}
+.mega-dropdown-menu:after{
+	border-bottom: 17px solid #fff;
+	border-right: 19px solid transparent;
+	border-left: 19px solid transparent;
+	position: absolute;
+	top: -17px;
+	left: 237px;
+	z-index: 8;
+}

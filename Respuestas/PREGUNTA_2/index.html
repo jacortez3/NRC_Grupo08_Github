@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pregunta 2</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+		integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+	 <!-- Favicons -->
+	 <link href="img/favicon.ico" rel="icon">
+	 <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+   
+	 <!-- Google Fonts -->
+	 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900" rel="stylesheet">
+   
+	 <!-- Bootstrap CSS File -->
+	 <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   
+	 <!-- Libraries CSS Files -->
+	 <link href="lib/nivo-slider/css/nivo-slider.css" rel="stylesheet">
+	 <link href="lib/owlcarousel/owl.carousel.css" rel="stylesheet">
+	 <link href="lib/owlcarousel/owl.transitions.css" rel="stylesheet">
+	 <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	 <link href="lib/animate/animate.min.css" rel="stylesheet">
+	 <link href="lib/venobox/venobox.css" rel="stylesheet">
+   
+	 <!-- Nivo Slider Theme -->
+	 <link href="css/nivo-slider-theme.css" rel="stylesheet">
+   
+	 <!-- Main Stylesheet File -->
+	 <link href="css/style.css" rel="stylesheet">
+   
+	 <!-- Responsive Stylesheet File -->
+	 <link href="css/responsive.css" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+  <style type="text/css">
+    #background {
+      position: absolute;
+      width: 99%;
+      height: 130%;
+    }
+
+    #fixed {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+    }
+  </style>
+
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="../../css/icomoon.css">
+<link rel="stylesheet" href="../../css/main.css">
+
+<script src="vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
+
+</head>
+
+<body>
+
+
+  <div id="fixed" style="padding-left:30%; padding-top: 10%;">
+    <br>
+    <img src="../../Imagenes/selloespe.png" width="65%" align="center">
+    <h1 style="padding-left:25%;">Pregunta 2</h1>
+    <p>2. Desarrollar la función CargarDatos(), para desplegar el contenido (Asincrónico) de un archivo XML:</p>
+    <ul style="list-style-type: none;">
+      <li>xhttp = new XMLHttpRequest();<br>
+        xhttp.onreadystatechange = function() {;<br>
+        if (this.readyState == 4 && this.status == 200) {;<br>
+        document.getElementById("demo").innerHTML = ; <br>
+        this.responseText; <br>
+        }; <br>
+        }; ;<br>
+        xhttp.open("GET", "Texto.txt", true);<br>
+        xhttp.send();<br>
+      </li>
+    </ul>
+    <div class="section" id="enunciado" style="padding-left:25%;margin-top: 5%;">
+      <button style="align-self: center;" type="button" onclick="CargarDatos()">Obtener Datos</button><br><br>
+      <div id="demo"></div>
+    </div>
+    <div class="section" id="resolucion" style="margin-top: 5%;">
+    </div>
+    <div class="section" style="margin-top: 5%;">
+    </div>
+    <br>
+    <button onclick="window.location.href='../../index.html'">Menu principal</button>
+  </div>
+
+  <script>
+
+
+    //Funcion para recuperar los datos del archivo .txt
+
+
+    //Creacion del objeto XMLHttpRequest
+
+    function CargarDatos() {
+
+      var xhttp;
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              var nombre,comida, txt ,i, xmlDoc; 
+              xmlDoc = xhttp.responseXML;
+              txt= "";
+              id= xmlDoc.getElementsByTagName("id");
+              nombre = xmlDoc.getElementsByTagName("nombre");
+              comida = xmlDoc.getElementsByTagName("comida");
+             //x= xmlDoc.getElementsByTagName("nombre");
+              for (i = 0; i < id.length; i++) { 
+                  txt+="El "+" "+ nombre[i].childNodes[0].nodeValue +" "+ "come"+" "+comida[i].childNodes[0].nodeValue+"<br>";
+                  document.getElementById("demo").innerHTML = txt ;   
+              }
+             
+            }
+        };
+        xhttp.open("GET", "ejemplo.xml", true);
+        xhttp.send();
+
+      
+      
+}
+  </script>
+  <script>window.jQuery || document.write('<script src="../../js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+
+  <script src="vendor/bootstrap.min.js"></script>
+
+  <script src="js/main.js"></script>
+<!--https://www.w3schools.com/xml/tryit.asp?filename=try_dom_list_loop-->
+</body>
+
+</html>

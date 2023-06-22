@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pregunta 3</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <style type="text/css">
+    #background{position:absolute; width:99%; height:130%;}
+    #fixed {position:absolute; top: 0px; left: 0px;}
+  </style>
+
+<link href="style.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div id="fixed" style="padding-left:30%; padding-top: 10%;">
+<br>
+    <img src="../../Imagenes/selloespe.png"  width="65%" align="center">
+    <h1 style="padding-left:25%;">Pregunta 3</h1>
+<p>Escoja su género de películas preferido para desplegar una tabla con la información correspondiente</p>
+<select id="myselect" onchange="change_myselect(this.value)">
+  <option value="">Elija una de las siguientes opciones.</option>
+  <option value="Terror">Terror</option>
+  <option value="Drama">Drama</option>
+  <option value="Accion">Accion</option>
+</select>
+<br>
+<br>
+<!--Tabla-->
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Protagonista</th>
+        </tr>
+      </thead>
+      <tbody id="respuesta">
+
+      </tbody>
+      
+    </table>
+<br>
+<button onclick="window.location.href='../../index.html'">Menu principal</button>
+</div>
+
+<script>
+
+// Desarrolle el script correspondiente, para que escoja el actor correspondiente
+function change_myselect(sel) {
+
+  var generoElegido="";
+
+  /*Poder saber que genero selecciono*/
+
+  if(sel=="Terror"){
+    generoElegido=sel;
+  }else if(sel=="Accion"){
+    generoElegido=sel;
+  }else if(sel=="Drama"){
+    generoElegido=sel;
+  }
+  
+  /*Trabajando con xml json y ajax*/
+
+  const xhttp = new XMLHttpRequest();
+  xhttp.open('GET','ListaPeliculas.json',true);
+  xhttp.send();
+  xhttp.onreadystatechange = function(){
+    if(this.readyState==4 && this.status==200){
+      var datos = JSON.parse(this.responseText);  //Covertimos el texto en un objeto JavaScript
+      var traerPeliculas = datos.peliculas;
+      console.log(traerPeliculas);
+      var respuesta= document.getElementById("respuesta");
+      respuesta.innerHTML=""; /*Nos ayudara a limpiar*/
+
+      for(var i=0;  i<traerPeliculas.length; i++){
+        var generos= datos.peliculas[i].Genero;
+        console.log(generos);
+        if(generos==generoElegido){
+          respuesta.innerHTML +=`
+          <tr>
+              <td>${datos.peliculas[i].Nombre}</td>
+              <td>${datos.peliculas[i].Protagonista}</td>
+                   
+          </tr>
+          `
+        } else if(generos==generoElegido){
+          respuesta.innerHTML +=`
+          <tr>
+              <td>${datos.peliculas[i].Nombre}</td>
+              <td>${datos.peliculas[i].Protagonista}</td>
+                   
+          </tr>
+          `
+        } else if(generos==generoElegido){
+          respuesta.innerHTML +=`
+          <tr>
+              <td>${datos.peliculas[i].Nombre}</td>
+              <td>${datos.peliculas[i].Protagonista}</td>
+                   
+          </tr>
+          `
+        }
+      }
+    }
+      
+    }
+  }
+
+
+
+
+</script>
+
+<!--https://www.youtube.com/watch?v=M4LaQ3KUGOM-->
+<!--https://www.aprenderaprogramar.com/index.php?option=com_content&view=article&id=958:ejemplo-recuperar-datos-de-fichero-json-en-javascript-ajax-jsonparse-evitar-cache-de-respuesta-cu01215f&catid=83&Itemid=212-->
+
+</body>
+</html>

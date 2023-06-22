@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pregunta 4</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <style type="text/css">
+    #background {
+      position: absolute;
+      width: 99%;
+      height: 130%;
+    }
+
+    #fixed {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+    }
+  </style>
+  <link href="style.css" rel="stylesheet">
+
+</head>
+
+<body>
+ 
+  <div id="fixed" style="padding-left:20%; padding-top: 10%;">
+    <br>
+    <img src="../../Imagenes/selloespe.png" width="65%" align="center">
+    <h1 style="padding-left:25%;">Pregunta 4</h1>
+    <p>4. Mostrar datos XML en una tabla utilizando AJAX.</p>
+    <div class="section" id="enunciado" style="padding-left:50%;margin-top: 5%;">
+      <button style="align-self: center;" type="button" onclick="CargarDatos()">Obtener tabla</button><br><br>
+    </div>
+    <table border="1" id="demo"></table>
+    <div class="section" id="resolucion" style="margin-top: 5%;">
+    </div>
+    <div class="section" style="margin-top: 5%;">
+    </div>
+    <br>
+    <button onclick="window.location.href='../../index.html'">Menu principal</button>
+  </div>
+
+  <script>
+
+    //Funcion para recuperar los datos del archivo .txt
+
+
+    //Creacion del objeto XMLHttpRequest
+
+    function CargarDatos() {
+
+        var xhttp;
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              var nombre,comida, txt ,i,j, xmlDoc; 
+              xmlDoc = xhttp.responseXML;
+              var table="<tr><th>ID</th><th>Nombre</th><th>Comida</th></tr>";
+              var animalesMamiferos = xmlDoc.getElementsByTagName("mamiferos");
+              var reptiles = xmlDoc.getElementsByTagName("reptiles");
+              var aves = xmlDoc.getElementsByTagName("aves");
+                for (i = 0; i <animalesMamiferos.length; i++) { 
+                    table += "<tr><td>" +
+                    animalesMamiferos[i].getElementsByTagName("id")[0].childNodes[0].nodeValue +
+                    "</td><td>" +
+                    animalesMamiferos[i].getElementsByTagName("nombre")[0].childNodes[0].nodeValue +
+                    "</td><td>"+animalesMamiferos[i].getElementsByTagName("comida")[0].childNodes[0].nodeValue+ "</td></tr>";
+                }
+                for (i = 0; i <reptiles.length; i++) { 
+                    table += "<tr><td>" +
+                    reptiles[i].getElementsByTagName("id")[0].childNodes[0].nodeValue +
+                    "</td><td>" +
+                    reptiles[i].getElementsByTagName("nombre")[0].childNodes[0].nodeValue +
+                    "</td><td>"+reptiles[i].getElementsByTagName("comida")[0].childNodes[0].nodeValue+ "</td></tr>";
+                }
+                for (i = 0; i <aves.length; i++) { 
+                    table += "<tr><td>" +
+                    aves[i].getElementsByTagName("id")[0].childNodes[0].nodeValue +
+                    "</td><td>" +
+                    aves[i].getElementsByTagName("nombre")[0].childNodes[0].nodeValue +
+                    "</td><td>"+aves[i].getElementsByTagName("comida")[0].childNodes[0].nodeValue+ "</td></tr>";
+                }
+                document.getElementById("demo").innerHTML = table;
+                            
+                }
+        };
+        xhttp.open("GET", "xml/ejemplo.xml", true);
+        xhttp.send();
+
+
+      
+      
+}
+  </script>
+</body>
+
+</html>
